@@ -1,0 +1,30 @@
+<h1>Article Search</h1>
+<input type="text" id="search-box" placeholder="Type to search articles..." autocomplete="off">
+<div id="search-results"></div>
+<br>
+<a href="/analytics">See My Search Analytics</a>
+
+<script>
+  const searchBox = document.getElementById('search-box');
+  let debounceTimeout = null;
+  let lastSent = '';
+
+  searchBox.addEventListener('input', function() {
+    clearTimeout(debounceTimeout);
+
+    debounceTimeout = setTimeout(() => {
+      const query = searchBox.value;
+      if (query.length > 2 && query !== lastSent) {
+        lastSent = query;
+        fetch('/search', {
+          method: 'POST',
+          headers: {
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ query: query })
+        });
+      }
+    }, 600);
+  });
+</script>

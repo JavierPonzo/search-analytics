@@ -1,0 +1,8 @@
+<h1>My Search Analytics</h1>
+<ul>
+  <% @searches.each do |s| %>
+    <li><%= s.query_text %> (at <%= s.created_at.strftime("%H:%M:%S") %>)</li>
+  <% end %>
+</ul>
+<a href="/">Back to search</a>
+
