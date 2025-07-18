@@ -1,25 +1,60 @@
-# README
+# Search Analytics
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails app I built to track search queries and let users add their own questions.
 
-Things you may want to cover:
+## What it does
 
-* Ruby version
+- Browse through articles and questions
+- Search in real-time (no page refreshes)
+- Track your search history
+- Add new questions via a form
+- View analytics of what you've searched for
 
-* System dependencies
+## Tech I used
 
-* Configuration
+- **Rails 8.0.2** - Backend framework
+- **PostgreSQL** - Database
+- **Bootstrap** - For styling
+- **Stimulus/Turbo** - JavaScript interactions
+- **RSpec** - Testing
+- **Heroku** - Deployment
 
-* Database creation
+## Setup locally
 
-* Database initialization
+```bash
+# Clone and setup
+git clone https://github.com/JavierPonzo/search-analytics.git
+cd search-analytics
+bundle install
 
-* How to run the test suite
+# Database setup
+rails db:create db:migrate db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+# Run tests
+bundle exec rspec
 
-* Deployment instructions
+# Start server
+rails server
+```
 
-* ...
-# search-analytics git init git add README.md git commit -m first commit git branch -M master git remote add origin git@github.com:JavierPonzo/search-analytics.git git push -u origin master
+## Features I implemented
+
+- **Real-time search**: Type and see results instantly
+- **Search analytics**: Tracks what you search for with session tokens
+- **User content**: Add new questions through a collapsible form
+- **Clean UI**: Bootstrap styling with responsive design
+- **Tests**: RSpec coverage for models and controllers
+
+## Live demo
+
+Check it out: https://search-analytics-d56c2a6d306b.herokuapp.com/
+
+## What I learned
+
+This was a good exercise in building a modern Rails app with:
+- AJAX forms and real-time search
+- Session-based analytics without user accounts
+- Rails 8 with Solid adapters for cache/queue/cable
+- Deployment challenges and configuration
+
+Pretty straightforward but covers the basics of what you'd want in a search application.

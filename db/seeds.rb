@@ -15,9 +15,9 @@ if Article.count == 0
     { title: 'How to start exercising?', content: 'Begin with 10-15 minutes daily, choose activities you enjoy, set realistic goals, and gradually increase intensity.' },
     { title: 'What makes a good friend?', content: 'Loyalty, honesty, good listening skills, reliability, shared interests, and someone who supports your growth.' },
     { title: 'How to travel on a budget?', content: 'Book in advance, use budget airlines, stay in hostels, eat local food, use public transport, and travel during off-seasons.' },
-    { title: 'What is the secret to happiness?', content: 'Research shows: gratitude, strong relationships, regular exercise, pursuing meaningful goals, and helping others contribute to happiness.' }
+    { title: "What is the secret to happiness?", content: "Research shows: gratitude, strong relationships, regular exercise, pursuing meaningful goals, and helping others contribute to happiness." }
   ])
-  
+
   puts "Created #{Article.count} articles!"
 else
   puts "Articles already exist (#{Article.count} found). Skipping seed."

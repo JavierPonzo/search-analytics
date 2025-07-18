@@ -38,10 +38,10 @@ class SearchController < ApplicationController
 
   def create_article
     @article = Article.new(article_params)
-    
+
     if @article.save
-      render json: { 
-        success: true, 
+      render json: {
+        success: true,
         message: "Question added successfully!",
         article: {
           title: @article.title,
@@ -49,8 +49,8 @@ class SearchController < ApplicationController
         }
       }
     else
-      render json: { 
-        success: false, 
+      render json: {
+        success: false,
         message: "Error: #{@article.errors.full_messages.join(', ')}"
       }
     end
