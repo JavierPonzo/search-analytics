@@ -12,7 +12,7 @@ RSpec.describe SearchController, type: :controller do
 
     it "assigns all articles when no search query" do
       get :index
-      expect(assigns(:articles)).to match_array([article1, article2])
+      expect(assigns(:articles)).to match_array([ article1, article2 ])
     end
 
     it "shows all articles regardless of search query" do
