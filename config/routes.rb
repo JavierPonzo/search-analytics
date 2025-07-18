@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   post 'search', to: 'search#create'
   get 'analytics', to: 'search#analytics'
   root "search#index"
+  delete 'analytics/reset', to: 'search#reset_analytics', as: :reset_analytics
 end

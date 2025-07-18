@@ -1,30 +1,18 @@
-<h1>Article Search</h1>
-<input type="text" id="search-box" placeholder="Type to search articles..." autocomplete="off">
-<div id="search-results"></div>
-<br>
-<a href="/analytics">See My Search Analytics</a>
+<div class="container py-5">
+  <h1 class="mb-4 display-4">Article Search</h1>
 
-<script>
-  const searchBox = document.getElementById('search-box');
-  let debounceTimeout = null;
-  let lastSent = '';
+  <div class="mb-3">
+    <input type="text" id="search-box" class="form-control form-control-lg" placeholder="Type to search articles..." autocomplete="off">
+  </div>
 
-  searchBox.addEventListener('input', function() {
-    clearTimeout(debounceTimeout);
+  <ul id="article-list" class="list-group mb-4">
+    <% @articles.each do |article| %>
+      <li class="list-group-item">
+        <strong class="h5"><%= article.title %></strong>
+        <p class="mb-1"><%= article.content %></p>
+      </li>
+    <% end %>
+  </ul>
 
-    debounceTimeout = setTimeout(() => {
-      const query = searchBox.value;
-      if (query.length > 2 && query !== lastSent) {
-        lastSent = query;
-        fetch('/search', {
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ query: query })
-        });
-      }
-    }, 600);
-  });
-</script>
+  <a href="/analytics" class="btn btn-primary">See My Search Analytics</a>
+</div>

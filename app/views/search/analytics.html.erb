@@ -1,8 +1,13 @@
-<h1>My Search Analytics</h1>
-<ul>
-  <% @searches.each do |s| %>
-    <li><%= s.query_text %> (at <%= s.created_at.strftime("%H:%M:%S") %>)</li>
-  <% end %>
-</ul>
-<a href="/">Back to search</a>
-
+<div class="container py-5">
+  <h1 class="mb-4 display-4">My Search Analytics</h1>
+  <ul class="list-group mb-4">
+    <% @searches.each do |s| %>
+      <li class="list-group-item">
+        <strong><%= s.query_text %></strong>
+        <span class="text-muted small">(at <%= s.created_at.strftime("%H:%M:%S") %>)</span>
+      </li>
+    <% end %>
+  </ul>
+  <%= button_to "Clear My Analytics", reset_analytics_path, method: :delete, class: "btn btn-danger mb-3", data: { confirm: "Are you sure?" } %>
+  <a href="/" class="btn btn-secondary">Back to search</a>
+</div>
