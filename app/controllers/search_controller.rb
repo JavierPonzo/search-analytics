@@ -35,4 +35,30 @@ class SearchController < ApplicationController
     SearchQuery.where(user_token: user_token).delete_all
     redirect_to analytics_path, notice: "Your search analytics were cleared."
   end
+
+  def create_article
+    @article = Article.new(article_params)
+    
+    if @article.save
+      render json: { 
+        success: true, 
+        message: "Question added successfully!",
+        article: {
+          title: @article.title,
+          content: @article.content
+        }
+      }
+    else
+      render json: { 
+        success: false, 
+        message: "Error: #{@article.errors.full_messages.join(', ')}"
+      }
+    end
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :content)
+  end
 end

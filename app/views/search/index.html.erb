@@ -5,6 +5,33 @@
     <input type="text" id="search-box" class="form-control form-control-lg" placeholder="Type to search articles..." autocomplete="off">
   </div>
 
+  <!-- Add New Question Section -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#addQuestionForm" aria-expanded="false" aria-controls="addQuestionForm">
+          ➕ Add a New Question
+        </button>
+      </h5>
+    </div>
+    <div id="addQuestionForm" class="collapse">
+      <div class="card-body">
+        <form id="new-article-form">
+          <div class="mb-3">
+            <label for="article-title" class="form-label">Question Title</label>
+            <input type="text" class="form-control" id="article-title" placeholder="e.g., How to bake the perfect cake?" required>
+          </div>
+          <div class="mb-3">
+            <label for="article-content" class="form-label">Answer</label>
+            <textarea class="form-control" id="article-content" rows="3" placeholder="Provide a helpful answer..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Add Question</button>
+        </form>
+        <div id="form-message" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
   <ul id="article-list" class="list-group mb-4">
     <% @articles.each do |article| %>
       <li class="list-group-item">
