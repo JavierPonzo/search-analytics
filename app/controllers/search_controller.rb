@@ -5,11 +5,10 @@ class SearchController < ApplicationController
     @articles = Article.all
   end
 
-
   def create
     @query = params[:query].to_s.strip
     return head :ok if @query.blank?
-    
+
     user_token = session[:search_user_token]
     SearchQuery.create(user_token: user_token, query_text: @query)
 
